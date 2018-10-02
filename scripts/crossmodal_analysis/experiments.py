@@ -1,4 +1,4 @@
-from crossmodal_models import models, data_loading
+from crossmodal_analysis import models, data_loading
 import h5py
 import numpy as np
 from sklearn.metrics import classification_report, f1_score, precision_score, recall_score

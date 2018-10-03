@@ -25,7 +25,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(title_abstract_5class_weights, 'wb').write(r.content)
 
-    print("BASELINE DATA LOADED") 
+    print("BASELINE DATA AND WEIGHTS LOADED") 
 
     captions_2clusters = "captions_2clusters.h5"
     url = "https://zenodo.org/record/1442704/files/captions_2clusters.h5"
@@ -47,7 +47,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(captions_5class_weights, 'wb').write(r.content)
 
-    print("EXPERIMENT #1 DATA LOADED") 
+    print("EXPERIMENT #1 LOADED") 
 
     figures_2clusters = "figures_2clusters.h5"
     url = "https://zenodo.org/record/1442704/files/figures_2clusters.h5"
@@ -69,7 +69,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(figures_5class_weights, 'wb').write(r.content)
 
-    print("EXPERIMENT #2 DATA LOADED") 
+    print("EXPERIMENT #2 LOADED") 
 
     cross = "cross.h5"
     url = "https://zenodo.org/record/1442704/files/cross.h5"
@@ -81,7 +81,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(cross_weights, 'wb').write(r.content)
 
-    print("EXPERIMENT #3 DATA LOADED") 
+    print("EXPERIMENT #3 LOADED") 
 
     captions_2clusters_cross = "captions_2clusters_cross.h5"
     url = "https://zenodo.org/record/1442704/files/captions_2clusters_cross.h5"
@@ -124,7 +124,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(figures_5class_cross_weights, 'wb').write(r.content)
     
-    print("EXPERIMENT #4 DATA LOADED")
+    print("EXPERIMENT #4 LOADED")
 	
     quality2clusters = "quality2clusters.h5"
     url = "https://zenodo.org/record/1442704/files/quality2clusters.h5"
@@ -156,8 +156,7 @@ def file_download():
     r = requests.get(url, allow_redirects=True)
     open(qualityUni5class, 'wb').write(r.content)
 		
-	
-    print("EXPERIMENT #5 DATA LOADED")
+    print("EXPERIMENT #5 LOADED")
 
 def gen_text (h5path, indices,batchSize, shuffle): 
   db = h5py.File(h5path, "r")

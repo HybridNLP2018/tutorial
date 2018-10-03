@@ -8,13 +8,13 @@ from keras import optimizers
 def exp_title_abs(granularity, n_papers):
     if (granularity == "2clusters"):
         num_class = 2
-        dataset = "./weights/title_abstract_2clusters.h5"
-        exp_weights = "./weights/title_abstract_2clusters_weights.h5"
+        dataset = "title_abstract_2clusters.h5"
+        exp_weights = "title_abstract_2clusters_weights.h5"
         target_names = ['Health','Tech']
     elif (granularity == "5class"):
         num_class = 5
-        dataset = "./weights/title_abstract_5class.h5"
-        exp_weights = "./weights/title_abstract_5class_weights.h5"
+        dataset = "title_abstract_5class.h5"
+        exp_weights = "title_abstract_5class_weights.h5"
         target_names = ['Medical and Health Sciences', 'Information and Computing Sciences', 'Engineering', 'Mathematical Sciences', 'Biological Sciences']
     else:
         print("Error calling method. Options: '2clusters' or '5class'")
@@ -46,11 +46,11 @@ def exp_captions(granularity, modality, n_captions, training=False):
         num_class = 2
         target_names = ['Health','Tech']
         if (modality == "unimodal"):
-            dataset = "./weights/captions_2clusters.h5"
-            exp_weights = "./weights/captions_2clusters_weights.h5"
+            dataset = "captions_2clusters.h5"
+            exp_weights = "captions_2clusters_weights.h5"
         elif (modality == "crossmodal"):
-            dataset = "./weights/captions_2clusters_cross.h5"
-            exp_weights = "./weights/captions_2clusters_cross_weights.h5"
+            dataset = "captions_2clusters_cross.h5"
+            exp_weights = "captions_2clusters_cross_weights.h5"
         else:
             print("Error calling method. Options: 'unimodal' or 'crossmodal'")
             return
@@ -58,11 +58,11 @@ def exp_captions(granularity, modality, n_captions, training=False):
         num_class = 5
         target_names = ['Medical and Health Sciences', 'Engineering', 'Biological Sciences', 'Mathematical Sciences', 'Information and Computing Sciences']
         if (modality == "unimodal"):
-            dataset = "./weights/captions_5class.h5"
-            exp_weights = "./weights/captions_5class_weights.h5"
+            dataset = "captions_5class.h5"
+            exp_weights = "captions_5class_weights.h5"
         elif (modality == "crossmodal"):
-            dataset = "./weights/captions_5class_cross.h5"
-            exp_weights = "./weights/captions_5class_cross_weights.h5"
+            dataset = "captions_5class_cross.h5"
+            exp_weights = "captions_5class_cross_weights.h5"
         else:
             print("Error calling method. Options: 'unimodal' or 'crossmodal'")
             return
@@ -125,11 +125,11 @@ def exp_figures(granularity, modality, n_images, training=False):
         num_class = 2
         target_names = ['Health', 'Tech']
         if (modality == "unimodal"):
-            dataset = "./weights/figures_2clusters.h5"
-            exp_weights = "./weights/figures_2clusters_weights.h5"
+            dataset = "figures_2clusters.h5"
+            exp_weights = "figures_2clusters_weights.h5"
         elif (modality == "crossmodal"):
-            dataset = "./weights/figures_2clusters_cross.h5"
-            exp_weights = "./weights/figures_2clusters_cross_weights.h5"
+            dataset = "figures_2clusters_cross.h5"
+            exp_weights = "figures_2clusters_cross_weights.h5"
         else:
             print("Error calling method. Options: 'unimodal' or 'crossmodal'")
             return
@@ -137,11 +137,11 @@ def exp_figures(granularity, modality, n_images, training=False):
         num_class = 5
         target_names = ['Medical and Health Sciences', 'Engineering', 'Biological Sciences', 'Mathematical Sciences', 'Information and Computing Sciences']
         if (modality == "unimodal"):
-            exp_weights = "./weights/figures_5class_weights.h5"
-            dataset = "./weights/figures_5class.h5"
+            exp_weights = "figures_5class_weights.h5"
+            dataset = "figures_5class.h5"
         elif (modality == "crossmodal"):
-            exp_weights = "./weights/figures_5class_cross_weights.h5"
-            dataset = "./weights/figures_5class_cross.h5"
+            exp_weights = "figures_5class_cross_weights.h5"
+            dataset = "figures_5class_cross.h5"
         else:
             print("Error calling method. Options: 'unimodal' or 'crossmodal'")
             return
@@ -205,8 +205,8 @@ def exp_figures(granularity, modality, n_images, training=False):
 
 def exp_cross(n_images, training):
     num_class = 2
-    dataset = "./weights/cross.h5"
-    exp_weights = "./weights/cross_weights.h5"
+    dataset = "cross.h5"
+    exp_weights = "cross_weights.h5"
     if(training == False):
         n_images = 26607
         batchSize = 32

@@ -13,15 +13,15 @@ import matplotlib.pyplot as plt
 def getIndices(granularity):
     if (granularity == "2clusters"):
         num_class = 2
-        dataset = "./weights/quality2clusters.h5"
-        exp_weights_uni = "./weights/qualityUni2clusters.h5"
-        exp_weights_mix = "./weights/qualityMix2clusters.h5"
+        dataset = "quality2clusters.h5"
+        exp_weights_uni = "qualityUni2clusters.h5"
+        exp_weights_mix = "qualityMix2clusters.h5"
 
     elif (granularity == "5class"):
         num_class = 5
-        dataset = "./weights/quality5class.h5"
-        exp_weights_uni = "./weights/qualityUni5class.h5"
-        exp_weights_mix = "./weights/qualityMix5class.h5"
+        dataset = "quality5class.h5"
+        exp_weights_uni = "qualityUni5class.h5"
+        exp_weights_mix = "qualityMix5class.h5"
 
     else:
         print("Error")
@@ -66,15 +66,15 @@ def getIndices(granularity):
 def getCAM(granularity):
     if (granularity == "2clusters"):
         num_class = 2
-        dataset = "./weights/quality2clusters.h5"
-        exp_weights_uni = "./weights/qualityUni2clusters.h5"
-        exp_weights_mix = "./weights/qualityMix2clusters.h5"
+        dataset = "quality2clusters.h5"
+        exp_weights_uni = "qualityUni2clusters.h5"
+        exp_weights_mix = "qualityMix2clusters.h5"
 
     elif (granularity == "5class"):
         num_class = 5
-        dataset = "./weights/quality5class.h5"
-        exp_weights_uni = "./weights/qualityUni5class.h5"
-        exp_weights_mix = "./weights/qualityMix5class.h5"
+        dataset = "quality5class.h5"
+        exp_weights_uni = "qualityUni5class.h5"
+        exp_weights_mix = "qualityMix5class.h5"
     else:
         print("Error")
         

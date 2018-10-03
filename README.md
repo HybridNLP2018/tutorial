@@ -7,7 +7,7 @@ Overal description of the tutorial: Many different artificial intelligence techn
 
 This tutorial covers the foundations and modern practical applications of knowledge-based and statistical methods, techniques and models and their combination for exploiting large document corpora. The tutorial will first focus on the foundations that can be used to this purpose, including knowledge graphs and word embeddings, and will then show how these techniques can be effectively combined in NLP tasks (and other data modalities in addition to text) related to research and commercial projects where the instructors currently participate.
 
-## How to run the notebooks:
+## How to run the tutorial notebooks:
 1. Sign in your Google account and go to “Hello, Colaboratory”: https://colab.research.google.com 
 2. Download the tutorial notebooks from the tutorial repo on GitHub: https://github.com/HybridNLP2018/tutorial 
 3. Open the notebooks (warning: Some of the notebooks e.g. notebook 08 may take a while to load data and/or model weights)

@@ -111,7 +111,7 @@ def exp_captions(granularity, modality, n_captions, training=False):
 	        labels_test = db["labels"][test,:]
 	        db.close()
 			  
-	        pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize, , verbose=1) 
+	        pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize, verbose=1) 
 	        maximos = np.argmax(pred,axis=1)
 	        predNew = np.zeros(np.shape(pred))
 	        for i in range(len(predNew)):

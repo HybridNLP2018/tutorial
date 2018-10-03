@@ -2,7 +2,7 @@ from keras import applications
 from keras import backend as K
 import cv2
 import random
-from crossmodal_analysis import models, data_loading
+from tutorial.scripts.crossmodal_analysis import models, data_loading
 import numpy as np
 import h5py
 from PIL import Image

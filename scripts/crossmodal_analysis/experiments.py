@@ -34,7 +34,7 @@ def exp_title_abs(granularity, n_papers):
     labels_test = db["labels"][test,:]
     db.close()
       
-    pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize) 
+    pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize, verbose=1) 
     maximos = np.argmax(pred,axis=1)
     predNew = np.zeros(np.shape(pred))
     for i in range(len(predNew)):
@@ -111,7 +111,7 @@ def exp_captions(granularity, modality, n_captions, training=False):
 	        labels_test = db["labels"][test,:]
 	        db.close()
 			  
-	        pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize) 
+	        pred = model.predict_generator(data_loading.gen_text(dataset, test, batchSize=batchSize,shuffle=False), steps = len(test)//batchSize, , verbose=1) 
 	        maximos = np.argmax(pred,axis=1)
 	        predNew = np.zeros(np.shape(pred))
 	        for i in range(len(predNew)):
@@ -164,7 +164,7 @@ def exp_figures(granularity, modality, n_images, training=False):
         labels_test = db["labels"][test,:]
         db.close()
 		  
-        pred = model.predict_generator(data_loading.gen_images(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize) 
+        pred = model.predict_generator(data_loading.gen_images(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize, verbose=1) 
         maximos = np.argmax(pred,axis=1)
         predNew = np.zeros(np.shape(pred))
         for i in range(len(predNew)):
@@ -223,7 +223,7 @@ def exp_cross(n_images, training):
         labels_test = db["labels"][test,:]
         db.close()
 		  
-        pred = model.predict_generator(data_loading.gen_cross(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize) 
+        pred = model.predict_generator(data_loading.gen_cross(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize, verbose=1) 
         maximos = np.argmax(pred,axis=1)
         predNew = np.zeros(np.shape(pred))
         for i in range(len(predNew)):
@@ -253,7 +253,7 @@ def exp_cross(n_images, training):
 	        labels_test = db["labels"][test,:]
 	        db.close()
 			  
-	        pred = model.predict_generator(data_loading.gen_cross(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize) 
+	        pred = model.predict_generator(data_loading.gen_cross(dataset, test, batchSize=batchSize, shuffle=False), steps = len(test)//batchSize, verbose=1) 
 	        maximos = np.argmax(pred,axis=1)
 	        predNew = np.zeros(np.shape(pred))
 	        for i in range(len(predNew)):

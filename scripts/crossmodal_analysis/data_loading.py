@@ -83,11 +83,21 @@ def file_download():
 
     print("EXPERIMENT #3 DATA LOADED") 
 
+    captions_2clusters_cross = "captions_2clusters_cross.h5"
+    url = "https://zenodo.org/record/1442704/files/captions_2clusters_cross.h5"
+    r = requests.get(url, allow_redirects=True)
+    open(captions_2clusters_cross, 'wb').write(r.content)
+    
     captions_2clusters_cross_weights = "captions_2clusters_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/captions_2clusters_cross_weights.h5"
     r = requests.get(url, allow_redirects=True)
     open(captions_2clusters_cross_weights, 'wb').write(r.content)
 
+    captions_5class_cross = "captions_5class_cross.h5"
+    url = "https://zenodo.org/record/1442704/files/captions_5class_cross.h5"
+    r = requests.get(url, allow_redirects=True)
+    open(captions_5class_cross, 'wb').write(r.content)
+    
     captions_5class_cross_weights = "captions_5class_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class_cross_weights.h5"
     r = requests.get(url, allow_redirects=True)
@@ -95,15 +105,25 @@ def file_download():
 
     print("EXPERIMENT #4 DATA LOADED") 
 
+    figures_2clusters_cross = "figures_2clusters_cross.h5"
+    url = "https://zenodo.org/record/1442704/files/figures_2clusters_cross.h5"
+    r = requests.get(url, allow_redirects=True)
+    open(figures_2clusters_cross, 'wb').write(r.content)
+    
     figures_2clusters_cross_weights = "figures_2clusters_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/figures_2clusters_cross_weights.h5"
     r = requests.get(url, allow_redirects=True)
-    open(figures_2clusters_weights, 'wb').write(r.content)
+    open(figures_2clusters_cross_weights, 'wb').write(r.content)
 
+    figures_5class_cross = "figures_5class_cross.h5"
+    url = "https://zenodo.org/record/1442704/files/figures_5class_cross.h5"
+    r = requests.get(url, allow_redirects=True)
+    open(figures_5class_cross, 'wb').write(r.content)
+    
     figures_5class_cross_weights = "figures_5class_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class_cross_weights.h5"
     r = requests.get(url, allow_redirects=True)
-    open(figures_5class_weights, 'wb').write(r.content)
+    open(figures_5class_cross_weights, 'wb').write(r.content)
 
     print("EXPERIMENT #5 DATA LOADED")
 

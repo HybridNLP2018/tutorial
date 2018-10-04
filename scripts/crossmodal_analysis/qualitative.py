@@ -87,7 +87,6 @@ def getCAM(granularity):
     ids = [indices_res[i0],indices_res[i1],indices_res[i2],indices_res[i3]]
     for indice in indices:
         i = indices_res[indice]
-        print (i)
         predicted_class = correct_class[indice]
         predUni = pred1[i,predicted_class]
         predMix = pred2[i,predicted_class]

@@ -63,7 +63,7 @@ def sub_tok(sub_tokens, subtok_type, expected_format='tlgs'):
         raise ValueError('unsupported expected_format %s' % expected_format)
 
 
-def subtok_dics(sub_tokens, line, include_glossa=True):
+def subtok_dictionary(sub_tokens, line, include_glossa=True):
     '''Returns the list of sub_tokens as a python dictionary'''
     syn_tok = as_nltk_wnet_synset_id(sub_tok(sub_tokens, 's'))
     return {
@@ -111,7 +111,7 @@ def open_as_token_dicts(file_name, token_format='tlgs',
 
             dec_toks = [urllib.parse.unquote(tok) for tok in toks]
             subdec_toks = [dec_tok.split(sep='|') for dec_tok in dec_toks]
-            subtok_dics = [subtok_dics(subdec_tok,
+            subtok_dics = [subtok_dictionary(subdec_tok,
                                        line=lnum,
                                        include_glossa=include_glossa)
                            for subdec_tok in subdec_toks]

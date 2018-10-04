@@ -96,7 +96,7 @@ def getCAM(granularity):
         db = h5py.File(dataset, "r")
         original_img = db["images"][i,:,:,:]
         img_fr_a = Image.fromarray(original_img, 'RGB')
-        img_fr_a.save(+str(i)+".png")
+        img_fr_a.save(str(i)+".png")
         db.close()
         list_img.append(original_img)
         img = np.array(list_img)

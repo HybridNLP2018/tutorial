@@ -42,7 +42,7 @@ from getopt import GetoptError, getopt
 from vecs import Vecs
 
 try:
-  opts, args = getopt(sys.argv[1:], '', ['embeddings=', 'vocab=', 'verbose='])
+  opts, args = getopt(sys.argv[1:], '', ['embeddings=', 'vocab=', 'verbose=', 'word_prefix'])
 except GetoptError as e:
   print(e, file=sys.stderr)
   sys.exit(2)
@@ -50,6 +50,7 @@ except GetoptError as e:
 opt_embeddings = None
 opt_vocab = None
 opt_verbose = False
+opt_word_prefix = None
 
 for o, a in opts:
   if o == '--embeddings':
@@ -58,6 +59,8 @@ for o, a in opts:
     opt_vocab = a
   if o == '--verbose':
     opt_verbose = True
+  if o == '--word_prefix':
+    opt_word_prefix = a
 
 if not opt_vocab:
   print('please specify a vocabulary file with "--vocab"', file=sys.stderr)
@@ -74,6 +77,13 @@ except IOError as e:
   sys.exit(1)
 
 
+def prefixed(word):
+  if opt_word_prefix is None:
+    return word
+  else:
+    return opt_word_prefix + word
+
+
 def evaluate(lines):
   acts, preds = [], []
 
@@ -82,7 +92,7 @@ def evaluate(lines):
   with open(filename, 'r', encoding='utf_8') as lines:
     for line in lines:
       w1, w2, act = line.strip().split('\t')
-      pred = vecs.similarity(w1, w2)
+      pred = vecs.similarity(prefixed(w1), prefixed(w2))
       tot = tot + 1
       if pred is None:
         continue

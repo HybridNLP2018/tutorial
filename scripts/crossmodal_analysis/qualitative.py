@@ -87,6 +87,7 @@ def getCAM(granularity):
     ids = [indices_res[i0],indices_res[i1],indices_res[i2],indices_res[i3]]
     for indice in indices:
         i = indices_res[indice]
+        print (i)
         predicted_class = correct_class[indice]
         predUni = pred1[i,predicted_class]
         predMix = pred2[i,predicted_class]
@@ -96,12 +97,10 @@ def getCAM(granularity):
         db = h5py.File(dataset, "r")
         original_img = db["images"][i,:,:,:]
         img_fr_a = Image.fromarray(original_img, 'RGB')
-        print (str(i))
         img_fr_a.save("./"+str(i)+".png")
         db.close()
         list_img.append(original_img)
         img = np.array(list_img)
-            
         cam, heatmap = grad_cam(exp_weights_uni, img, predicted_class, num_class)
         cv2.imwrite("./uni-"+str(i)+".png", cam)
         cv2.imwrite("./uni-heatmap"+str(i)+".png", heatmap)

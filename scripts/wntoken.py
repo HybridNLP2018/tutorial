@@ -37,13 +37,13 @@ def tlgs_subtok(sub_tokens, subtok_type):
         raise ValueError("Expecting at least 2 sub token values, but found",
                          sub_tokens)
     if subtok_type == 't':
-        return sub_tokens[0]
+        return sub_tokens[0].replace('+', ' ')
     elif subtok_type == 'l':
-        return sub_tokens[1] if is_lemma(sub_tokens[1]) else None
+        return sub_tokens[1].replace('+', ' ') if is_lemma(sub_tokens[1]) else None
     elif subtok_type == 'g':
         end = min(3, len(sub_tokens))
         vals = [val_if_gt(val) for val in sub_tokens[1:end]]
-        gt_vals = [v for v in vals if v is not None]
+        gt_vals = [v.replace('GT_', '') for v in vals if v is not None]
         return gt_vals[0] if len(gt_vals) > 0 else None
     elif subtok_type == 's':
         end = min(4, len(sub_tokens))
@@ -106,7 +106,7 @@ def open_as_token_dicts(file_name, token_format='tlgs',
         for line in f.readlines():
             toks = [tok for tok in line.split()]
             end = len(toks)
-            if not (max_toks_per_line is None):
+            if max_toks_per_line is not None:
                 end = min(max_toks_per_line, end)
 
             dec_toks = [urllib.parse.unquote(tok) for tok in toks]

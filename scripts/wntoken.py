@@ -101,7 +101,7 @@ def open_as_token_dicts(file_name, token_format='tlgs',
                         include_glossa=True):
     '''Returns a list of token dictionaries'''
     toked_lines = []
-    with open('_tlgs_wnscd', encoding='utf8') as f:
+    with open(file_name, encoding='utf8') as f:
         lnum = 1
         for line in f.readlines():
             toks = [tok for tok in line.split()]

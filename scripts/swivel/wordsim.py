@@ -42,7 +42,7 @@ from getopt import GetoptError, getopt
 from vecs import Vecs
 
 try:
-  opts, args = getopt(sys.argv[1:], '', ['embeddings=', 'vocab=', 'verbose=', 'word_prefix'])
+  opts, args = getopt(sys.argv[1:], '', ['embeddings=', 'vocab=', 'verbose=', 'word_prefix='])
 except GetoptError as e:
   print(e, file=sys.stderr)
   sys.exit(2)

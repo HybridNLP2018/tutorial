@@ -39,7 +39,8 @@ def tlgs_subtok(sub_tokens, subtok_type):
     if subtok_type == 't':
         return sub_tokens[0].replace('+', ' ')
     elif subtok_type == 'l':
-        return sub_tokens[1].replace('+', ' ') if is_lemma(sub_tokens[1]) else None
+        lem = sub_tokens[1] if is_lemma(sub_tokens[1]) else None
+        return None if lem is None else lem.replace('lem_', '').replace('+', ' ')
     elif subtok_type == 'g':
         end = min(3, len(sub_tokens))
         vals = [val_if_gt(val) for val in sub_tokens[1:end]]

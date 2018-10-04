@@ -112,10 +112,10 @@ def open_as_token_dicts(file_name, token_format='tlgs',
             dec_toks = [urllib.parse.unquote(tok) for tok in toks]
             subdec_toks = [dec_tok.split(sep='|') for dec_tok in dec_toks]
             subtok_dics = [subtok_dictionary(subdec_tok,
-                                       line=lnum,
-                                       include_glossa=include_glossa)
+                                             line=lnum,
+                                             include_glossa=include_glossa)
                            for subdec_tok in subdec_toks]
-            toked_lines.append(subtok_dics)
+            toked_lines = toked_lines + subtok_dics
             lnum += 1
             if (max_lines is not None) and lnum > max_lines:
                 break

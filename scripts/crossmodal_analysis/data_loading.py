@@ -21,7 +21,7 @@ def file_download():
     title_abstract_5class = "title_abstract_5class.h5"
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(title_abstract_5class, 'wb') as f:
@@ -35,7 +35,7 @@ def file_download():
     title_abstract_5class_weights = "title_abstract_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(title_abstract_5class_weights, 'wb') as f:
@@ -61,7 +61,7 @@ def file_download():
     figures_5class = "figures_5class.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(figures_5class, 'wb') as f:
@@ -75,7 +75,7 @@ def file_download():
     figures_5class_weights = "figures_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(figures_5class_weights, 'wb') as f:
@@ -102,7 +102,7 @@ def file_download():
     captions_5class = "captions_5class.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024*1024
     wrote = 0 
     with open(captions_5class, 'wb') as f:
@@ -116,7 +116,7 @@ def file_download():
     captions_5class_weights = "captions_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(captions_5class_weights, 'wb') as f:
@@ -132,7 +132,7 @@ def file_download():
     cross = "cross.h5"
     url = "https://zenodo.org/record/1442704/files/cross.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(cross, 'wb') as f:
@@ -146,7 +146,7 @@ def file_download():
     cross_weights = "cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/cross_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(cross_weights, 'wb') as f:
@@ -172,7 +172,7 @@ def file_download():
     captions_5class_cross = "captions_5class_cross.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class_cross.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(captions_5class_cross, 'wb') as f:
@@ -186,7 +186,7 @@ def file_download():
     captions_5class_cross_weights = "captions_5class_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class_cross_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(captions_5class_cross_weights, 'wb') as f:
@@ -211,7 +211,7 @@ def file_download():
     figures_5class_cross = "figures_5class_cross.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class_cross.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(figures_5class_cross, 'wb') as f:
@@ -225,7 +225,7 @@ def file_download():
     figures_5class_cross_weights = "figures_5class_cross_weights.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class_cross_weights.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(figures_5class_cross_weights, 'wb') as f:
@@ -246,7 +246,7 @@ def file_download():
     quality5class = "quality5class.h5"
     url = "https://zenodo.org/record/1442704/files/quality5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(quality5class, 'wb') as f:
@@ -265,7 +265,7 @@ def file_download():
     qualityMix5class = "qualityMix5class.h5"
     url = "https://zenodo.org/record/1442704/files/qualityMix5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024))
     block_size = 1024
     wrote = 0 
     with open(qualityMix5class, 'wb') as f:
@@ -284,7 +284,7 @@ def file_download():
     qualityUni5class = "qualityUni5class.h5"
     url = "https://zenodo.org/record/1442704/files/qualityUni5class.h5"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(qualityUni5class, 'wb') as f:
@@ -298,7 +298,7 @@ def file_download():
     imageshq = "5class.zip"
     url = "https://zenodo.org/record/1442708/files/5class.zip"
     r = requests.get(url, stream=True)
-    total_size = int(r.headers.get('content-length', 0)); 
+    total_size = (int(r.headers.get('content-length', 0))/(32*1024)) 
     block_size = 1024
     wrote = 0 
     with open(imageshq, 'wb') as f:

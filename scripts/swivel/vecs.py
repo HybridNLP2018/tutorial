@@ -118,6 +118,6 @@ class Vecs(object):
       for word, sim in res[:10]:
         results.append({
           'cosim'+result_key_suffix: sim,
-          'word'+reuslt_key_suffix: word
+          'word'+result_key_suffix: word
         })
     return results

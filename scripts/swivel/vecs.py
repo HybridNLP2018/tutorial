@@ -106,7 +106,7 @@ class Vecs(object):
     idx = self.word_to_idx.get(word)
     return None if idx is None else self.vecs[idx]
   
-  def k_neighbors(self, word, k=10):
+  def k_neighbors(self, word, k=10, result_key_suffix=''):
     """Returns the `k` nearest neighbors for the input word
     Returns a list of dicts with keys 'cosim' and 'word'
     """
@@ -117,7 +117,7 @@ class Vecs(object):
     else:
       for word, sim in res[:10]:
         results.append({
-          'cosim': sim,
-          'word': word
+          'cosim'+result_key_suffix: sim,
+          'word'+reuslt_key_suffix: word
         })
     return results

@@ -22,10 +22,10 @@ def file_download():
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class.h5"
     r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0))
-    block_size = 1
+    block_size = 1024
     wrote = 0 
     with open(title_abstract_5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -39,7 +39,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(title_abstract_5class_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -65,7 +65,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(figures_5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -79,7 +79,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(figures_5class_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -106,7 +106,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(captions_5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -120,7 +120,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(captions_5class_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -136,7 +136,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(cross, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -150,7 +150,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(cross_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -176,7 +176,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(captions_5class_cross, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -190,7 +190,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(captions_5class_cross_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -215,7 +215,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(figures_5class_cross, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -229,7 +229,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(figures_5class_cross_weights, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -250,7 +250,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(quality5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -269,7 +269,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(qualityMix5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -288,7 +288,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(qualityUni5class, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='MB', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:
@@ -302,7 +302,7 @@ def file_download():
     block_size = 1024
     wrote = 0 
     with open(imageshq, 'wb') as f:
-    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
         	wrote = wrote  + len(data)
         	f.write(data)
     if total_size != 0 and wrote != total_size:

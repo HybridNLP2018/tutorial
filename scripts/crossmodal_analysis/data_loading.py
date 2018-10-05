@@ -22,7 +22,7 @@ def file_download():
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class.h5"
     r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0))
-    block_size = 1024
+    block_size = 1
     wrote = 0 
     with open(title_abstract_5class, 'wb') as f:
     	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='B', unit_scale=True):

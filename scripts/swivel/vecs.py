@@ -113,7 +113,7 @@ class Vecs(object):
     results = []
     res = self.neighbors(word)
     if not res:
-      print('%s is not in the vocabulary, try e.g. %s' % (word, vecs.random_word_in_vocab()))
+      print('%s is not in the vocabulary, try e.g. %s' % (word, self.random_word_in_vocab()))
     else:
       for word, sim in res[:10]:
         results.append({

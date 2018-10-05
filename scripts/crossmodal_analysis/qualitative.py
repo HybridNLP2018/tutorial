@@ -109,7 +109,7 @@ def getCAM(granularity):
     for index in ids:
         img0 = cv2.imread("./mix-"+str(index)+".png", flags=cv2.IMREAD_COLOR)
         img1 = cv2.imread("./uni-"+str(index)+".png", flags=cv2.IMREAD_COLOR)
-        img2 = cv2.imread("./hq_images/"+str(index)+".png", flags=cv2.IMREAD_COLOR)
+        img2 = cv2.imread("./5class/"+str(index)+".png", flags=cv2.IMREAD_COLOR)
         fig = plt.figure()
         fig.set_size_inches(18.5, 10.5, forward=True)
         ax2 = fig.add_subplot(131)

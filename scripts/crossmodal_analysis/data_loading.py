@@ -20,7 +20,7 @@ def file_download():
 
     title_abstract_5class = "title_abstract_5class.h5"
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class.h5"
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0)); 
     block_size = 1024
     wrote = 0 
@@ -34,7 +34,7 @@ def file_download():
 
     title_abstract_5class_weights = "title_abstract_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/title_abstract_5class_weights.h5"
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0)); 
     block_size = 1024
     wrote = 0 
@@ -61,12 +61,30 @@ def file_download():
     captions_5class = "captions_5class.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class.h5"
     r = requests.get(url, allow_redirects=True)
-    open(captions_5class, 'wb').write(r.content)
+    total_size = int(r.headers.get('content-length', 0)); 
+    block_size = 1024
+    wrote = 0 
+    with open(captions_5class, 'wb') as f:
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
+        	wrote = wrote  + len(data)
+        	f.write(data)
+    if total_size != 0 and wrote != total_size:
+        print("ERROR, something went wrong")
+    f.close
 
     captions_5class_weights = "captions_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/captions_5class_weights.h5"
     r = requests.get(url, allow_redirects=True)
-    open(captions_5class_weights, 'wb').write(r.content)
+    total_size = int(r.headers.get('content-length', 0)); 
+    block_size = 1024
+    wrote = 0 
+    with open(captions_5class_weights, 'wb') as f:
+    	for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
+        	wrote = wrote  + len(data)
+        	f.write(data)
+    if total_size != 0 and wrote != total_size:
+        print("ERROR, something went wrong")
+    f.close
 
     print("EXPERIMENT #1 LOADED") 
 
@@ -82,7 +100,7 @@ def file_download():
 
     figures_5class = "figures_5class.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class.h5"
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0)); 
     block_size = 1024
     wrote = 0 
@@ -96,7 +114,7 @@ def file_download():
 
     figures_5class_weights = "figures_5class_weights.h5"
     url = "https://zenodo.org/record/1442704/files/figures_5class_weights.h5"
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, stream=True)
     total_size = int(r.headers.get('content-length', 0)); 
     block_size = 1024
     wrote = 0 

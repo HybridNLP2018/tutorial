@@ -1,6 +1,7 @@
 import requests
 import h5py
 import numpy as np
+import zipfile
 
 def file_download():
     print("LOADING DATASETS AND MODEL WEIGHTS")
@@ -155,6 +156,13 @@ def file_download():
     url = "https://zenodo.org/record/1442704/files/qualityUni5class.h5"
     r = requests.get(url, allow_redirects=True)
     open(qualityUni5class, 'wb').write(r.content)
+    imageshq = "5class.zip"
+    url = "https://zenodo.org/record/1442708/files/5class.zip"
+    r = requests.get(url, allow_redirects=True)
+    open(imageshq, 'wb').write(r.content)
+    zip_ref = zipfile.ZipFile(imageshq, 'r')
+    zip_ref.extractall(".")
+    zip_ref.close()
 		
     print("EXPERIMENT #5 LOADED")
 

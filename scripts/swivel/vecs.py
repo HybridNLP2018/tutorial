@@ -105,3 +105,19 @@ class Vecs(object):
     """Returns the embedding for a token, or None if no embedding exists."""
     idx = self.word_to_idx.get(word)
     return None if idx is None else self.vecs[idx]
+  
+  def k_neighbors(self, word, k=10):
+    """Returns the `k` nearest neighbors for the input word
+    Returns a list of dicts with keys 'cosim' and 'word'
+    """
+    results = []
+    res = self.neighbors(word)
+    if not res:
+      print('%s is not in the vocabulary, try e.g. %s' % (word, vecs.random_word_in_vocab()))
+    else:
+      for word, sim in res[:10]:
+        results.append({
+          'cosim': sim,
+          'word': word
+        })
+    return results

@@ -27,7 +27,7 @@ def getIndices(granularity):
         print("Error")
 
     db = h5py.File(dataset, "r")
-    indices_res = db["indices_res"]
+    #indices_res = db["indices_res"]
     correct_class = db["correct_class"]
     pred1 = db["pred1"]
     pred2 = db["pred2"]

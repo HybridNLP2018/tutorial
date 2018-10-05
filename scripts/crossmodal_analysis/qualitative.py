@@ -26,8 +26,8 @@ def getIndices(granularity):
     else:
         print("Error")
 
-    db = h5py.File(dataset, "r")
-    #indices_res = db["indices_res"]
+    db = h5py.File("./tutorial/scripts/crossmodal_analysis/indices_quality.h5", "r")
+    indices_res = db["indices_res"]
     correct_class = db["correct_class"]
     pred1 = db["pred1"]
     pred2 = db["pred2"]

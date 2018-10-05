@@ -26,41 +26,12 @@ def getIndices(granularity):
     else:
         print("Error")
 
-    n_images = 8192
-    test = list(range (0,n_images))
-    batchSize = 64
-
-    modelUni = models.generateVisualModel(num_class)
-    modelUni.load_weights(exp_weights_uni)
-
-    pred1 = modelUni.predict_generator(data_loading.gen_images(dataset, test, batchSize=batchSize,shuffle=False),steps = len(test)//batchSize)
-    maximos1 = np.argmax(pred1,axis=1)
-    predNew1 = np.zeros(np.shape(pred1))
-    for i in range(len(predNew1)):
-        predNew1[i,maximos1[i]]=1
-        
-    modelMix = models.generateVisualModel(num_class)
-    modelMix.load_weights(exp_weights_mix)
-
-    pred2 = modelMix.predict_generator(data_loading.gen_images(dataset, test, batchSize=batchSize,shuffle=False),steps = len(test)//batchSize)
-    maximos2 = np.argmax(pred2,axis=1)
-    predNew2 = np.zeros(np.shape(pred2))
-    for i in range(len(predNew2)):
-        predNew2[i,maximos2[i]]=1
-
     db = h5py.File(dataset, "r")
-    labels_test = db["labels"][test,:]
+    indices_res = db["indices_res"]
+    correct_class = db["correct_class"]
+    pred1 = db["pred1"]
+    pred2 = db["pred2"]
     db.close()
-
-    indices_res = []
-    for j in range(0,n_images):
-        if (np.array_equal(predNew2[j],labels_test[j]) and (np.array_equal(predNew1[j],labels_test[j]))== False):
-            indices_res.append(j)
-    correct_class = []
-    for k in indices_res:
-        for l in range(0,num_class):
-            if (predNew2[k,l]==1):
-                correct_class.append(l)
     return indices_res, correct_class, pred1, pred2
 
 def getCAM(granularity):

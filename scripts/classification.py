@@ -21,7 +21,6 @@ import gc
 import nltk
 import tensorflow as tf
 import urllib
-import swivel.vecs as vecs
 
 # make sure we have the stopwords data in this environment
 nltk.download('stopwords')
@@ -171,18 +170,6 @@ def load_tsv_embeddings(name, sep='\t', max_words=None,
             'vecs': vectors,
             'source': name,
             'dim': dim}
-
-
-def load_swivel_bin_vocab_embeddings(bin_file, vocab_file):
-    vectors = vecs.Vecs(vocab_file, bin_file)
-    vecarr = array.array(str('d'))
-    for idx in range(len(vectors.vocab)):
-        vectors.extend(float(x) for x in vectors.vecs[idx])
-    return {'itos': vectors.vocab,
-            'stoi': vectors.word_to_idx,
-            'vecs': vecarr,
-            'source': 'swivel' + bin_file,
-            'dim': vectors.vecs.shape[1]}
 
 
 def concat_embs(embA, embB):

@@ -18,6 +18,11 @@ from keras.layers import Conv1D, MaxPooling1D, Flatten, Reshape, Embedding, Dens
 from keras.callbacks import EarlyStopping
 import keras
 import gc
+import nltk
+
+
+# make sure we have the stopwords data in this environment
+nltk.download('stopwords')
 
 
 def read_classification_corpus(df, text_fields=['text'], tag_field='tag',

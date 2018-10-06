@@ -464,7 +464,8 @@ def create_final_dense_layers(partial_model, in_dim_hint=None, hparams={}):
     in_dim = partial_model.shape[1]
     if not type(in_dim) == int:
         print('partial model does not provide correct input dimension,' +
-              'using hint instead. partial_model shape:' + partial_model.shape)
+              'using hint instead. partial_model shape:' +
+              str(partial_model.shape))
         assert in_dim_hint is not None
         print('type of hint:', type(in_dim_hint))
         assert type(in_dim_hint) == int

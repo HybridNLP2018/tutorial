@@ -20,6 +20,7 @@ import keras
 import gc
 import nltk
 import tensorflow as tf
+import urllib
 
 # make sure we have the stopwords data in this environment
 nltk.download('stopwords')
@@ -344,6 +345,115 @@ def simple_index_ds(raw_dataset, max_words=None):
     '''
     voc_emb = extract_vocab_embedding(raw_dataset, max_words=max_words)
     return index_ds_using_vocab(raw_dataset, voc_emb)
+
+
+def wnet_val_if_gt(val):
+    '''Returns the value, but only if it's a grammar subtoken'''
+    return val if wnet_is_grammar(val) else None
+
+
+def wnet_val_if_concept(val):
+    '''Returns the value, but only if it's a concept subtoken'''
+    return val if is_concept(val) else None
+
+
+
+def wnet_is_grammar(val):
+    '''Returns true if the string value is a grammar subtoken'''
+    return val.startswith('GT_')
+
+
+def wnet_is_lemma(val):
+    '''Returns true if the string value is a lemma subtoken'''
+    return val.startswith('lem_')
+
+
+def wnet_tlgs_subtok(sub_tokens, subtok_type):
+    '''Returns the subtoken of the requested subtok_type or None
+    Processes the list of sub_tokens and returns the subtoken of
+    the requested subtok_type, if available. Otherwise, returns None'''
+    if sub_tokens is None:
+        raise ValueError("No sub_tokens passed", sub_tokens)
+    if len(sub_tokens) < 2:
+        raise ValueError("Expecting at least 2 sub token values, but found",
+                         sub_tokens)
+    if subtok_type == 't':
+        return sub_tokens[0].replace('+', ' ')
+    elif subtok_type == 'l':
+        lem = sub_tokens[1] if wnet_is_lemma(sub_tokens[1]) else None
+        return None if lem is None else lem.replace('lem_', '').replace('+', ' ')
+    elif subtok_type == 'g':
+        end = min(3, len(sub_tokens))
+        vals = [wnet_val_if_gt(val) for val in sub_tokens[1:end]]
+        gt_vals = [v.replace('GT_', '') for v in vals if v is not None]
+        return gt_vals[0] if len(gt_vals) > 0 else None
+    elif subtok_type == 's':
+        end = min(4, len(sub_tokens))
+        vals = [wnet_val_if_concept(val) for val in sub_tokens[1:end]]
+        s_vals = [v for v in vals if v is not None]
+        return s_vals[0] if len(s_vals) > 0 else None
+    else:
+        raise ValueError('Subtok type %s not supported for format tlgs' %
+                         subtok_type)
+
+
+def wnet_sub_tok(sub_tokens, subtok_type, expected_format='tlgs'):
+    '''Returns the subtoken of the requested type, for the expected format'''
+    if expected_format == 'tlgs':
+        return wnet_tlgs_subtok(sub_tokens, subtok_type)
+    else:
+        raise ValueError('unsupported expected_format %s' % expected_format)
+
+
+def wnet_ls(tok, emb):
+    dec_tok = urllib.parse.unquote(tok)
+    subdec_toks = dec_tok.split(sep='|')
+    lem = wnet_sub_tok(subdec_toks, 'l')
+    syn = wnet_sub_tok(subdec_toks, 's')
+    return [emb['stoi'].get(lem, 0), emb['stoi'].get(syn, 0)]
+
+
+def add_w2i_i2w(emb):
+    emb['w2i'] = emb['stoi']
+    emb['i2w'] = emb['itos']
+    return emb
+
+
+def index_texts_wnet_ls(texts, emb):
+    result = [[wnet_ls(tok, emb) for tok in doc.split()] for
+              doc in texts]
+    lems_oov, syns_oov = 0, 0
+    lems_inv, syns_inv = 0, 0
+    for seq in result:
+        for tok in seq:
+            assert len(tok) == 2
+            if tok[0] == 0:
+                lems_oov = lems_oov + 1
+            else:
+                lems_inv = lems_inv + 1
+            if tok[1] == 0:
+                syns_oov = syns_oov + 1
+            else:
+                syns_inv = syns_inv + 1
+    tot_toks = lems_oov + lems_inv
+    msg = 'Found %d (%.3f) %s in and %d (%.3f) out of vocab'
+    print(msg % (lems_inv, lems_inv/tot_toks, 'lems',
+                 lems_oov, lems_oov/tot_toks))
+    print(msg % (syns_inv, syns_inv/tot_toks, 'syns',
+                 syns_oov, syns_oov/tot_toks))
+    return add_w2i_i2w(emb), result
+
+
+def index_ds_wnet(raw_dataset, vocab_emb,
+                  texts_indexing_fn=index_texts_wnet_ls):
+    msg = 'You must pass a valid texts indexing function'
+    assert texts_indexing_fn is not None, msg
+    inputs = {}
+    for field, texts in raw_dataset['texts'].items():
+        result_vocemb, inputs[field] = texts_indexing_fn(texts, vocab_emb)
+    return {'vocab_embedding': result_vocemb,
+            'inputs': inputs,
+            'outputs': to_categorical_tags(raw_dataset)}
 
 
 def plot_max_seq_len(seq_len, max_seq_len):

@@ -19,7 +19,7 @@ from keras.callbacks import EarlyStopping
 import keras
 import gc
 import nltk
-
+import tensorflow as tf
 
 # make sure we have the stopwords data in this environment
 nltk.download('stopwords')
@@ -462,6 +462,8 @@ def create_final_dense_layers(partial_model, in_dim_hint=None, hparams={}):
     out_classes = hparams.get('output_classes', 2)
     model = partial_model
     in_dim = partial_model.shape[1]
+    if type(in_dim) == tf.Dimension:
+        in_dim = in_dim.value
     if not type(in_dim) == int:
         print('partial model does not provide correct input dimension,' +
               'using hint instead. partial_model shape:' +

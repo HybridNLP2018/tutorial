@@ -354,8 +354,7 @@ def wnet_val_if_gt(val):
 
 def wnet_val_if_concept(val):
     '''Returns the value, but only if it's a concept subtoken'''
-    return val if is_concept(val) else None
-
+    return val if wnet_is_concept(val) else None
 
 
 def wnet_is_grammar(val):
@@ -366,6 +365,11 @@ def wnet_is_grammar(val):
 def wnet_is_lemma(val):
     '''Returns true if the string value is a lemma subtoken'''
     return val.startswith('lem_')
+
+
+def wnet_is_concept(val):
+    '''Returns true if the string value is a synset subtoken'''
+    return val.startswith('wn31_')
 
 
 def wnet_tlgs_subtok(sub_tokens, subtok_type):

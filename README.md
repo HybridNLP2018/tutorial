@@ -12,3 +12,5 @@ This tutorial covers the foundations and modern practical applications of knowle
 2. Download the tutorial notebooks from the tutorial repo on GitHub: https://github.com/HybridNLP2018/tutorial 
 3. Open the notebooks (warning: Some of the notebooks e.g. notebook 08 may take a while to load data and/or model weights)
 
+## Acknowledgements
+We gratefully acknowledge funding from the EU Research and Innovation Horizon 2020 programme (projects DANTE-700367 and TRIVALENT-740934) and the Spanish Centre for the Development of Industrial Technology, CDTI (project GRESLADIX-IDI-20160805). 

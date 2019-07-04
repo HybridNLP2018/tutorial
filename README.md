@@ -20,7 +20,7 @@ If this work is relevant for your research, please cite the following paper:
 
 You can use the following BibTex entry:
 
-`@article{Denaux2019Vecsigrafo,  <br/>
+`@article{Denaux2019Vecsigrafo,`  <br/>
 title={Vecsigrafo: Corpus-based Word-Concept Embeddings},  
 author={Ronald Denaux and Jose Manuel Gomez-Perez},  
 journal={Semantic Web},  

@@ -16,7 +16,7 @@ This tutorial covers the foundations and modern practical applications of knowle
 ## How to cite this tutorial:
 If this work is relevant for your research, please cite the following paper:
 
-**Ronald Denaux and Jose Manuel Gomez-Perez. 2019. Vecsigrafo: Corpus-based Word-Concept Embeddings. Semantic Web (2019), 1–28. https://doi.org/10.3233/SW-190361**
+**_Ronald Denaux and Jose Manuel Gomez-Perez. 2019. Vecsigrafo: Corpus-based Word-Concept Embeddings. Semantic Web (2019), 1–28. https://doi.org/10.3233/SW-190361_**
 
 You can use the following BibTex entry:
 

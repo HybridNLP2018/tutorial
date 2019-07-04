@@ -20,18 +20,12 @@ If this work is relevant for your research, please cite the following paper:
 
 You can use the following BibTex entry:
 
-`@article{Denaux2019Vecsigrafo, 
-
-title={Vecsigrafo: Corpus-based Word-Concept Embeddings},
-
-author={Ronald Denaux and Jose Manuel Gomez-Perez},
-
-journal={Semantic Web},
-
-year={2019},
-
-pages={1-28},
-
+`@article{Denaux2019Vecsigrafo,  
+title={Vecsigrafo: Corpus-based Word-Concept Embeddings},  
+author={Ronald Denaux and Jose Manuel Gomez-Perez},  
+journal={Semantic Web},  
+year={2019},  
+pages={1-28},  
 doi = {10.3233/SW-190361}}`
 
 ## Acknowledgements

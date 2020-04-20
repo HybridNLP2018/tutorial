@@ -1,4 +1,8 @@
 # HybridNLP2018 - Tutorial on Hybrid Techniques for Knowledge-based NLP
+
+## This repo is now Archived
+This repo is now **archived** and will no longer maintained (some of the notebooks may no longer work in Google Colaboratory due to it moving to Tensorflow 2). However, for an updated and maintained version of this tutorial, use [hybridnlp](https://github.com/hybridnlp) with revised and new notebooks as well as an upcoming book!
+
 ## Knowledge graphs meet machine learning and all their friends
 
 This repo contains the notebooks and overall materials of the HybridNLP 2018 tutorial (http://expertsystemlab.com/hybridNLP18/)
